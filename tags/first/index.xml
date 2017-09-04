@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>jisoon on jisoon </title>
+      <title>First on jisoon </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>https://jisoon.github.io/</link>
+    <link>https://jisoon.github.io/tags/first/</link>
     <language>ko</language>
     
     <copyright>&amp;copy; Copyright notice</copyright>
@@ -23,15 +23,6 @@
 그런데 몇글자를 써야지.. 리드모어가 나올까요???
 아직도 안나오네요..이거원 언제 나오려나..동해물과백두산이마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 끝임 없이 나오면.. 싫은데..왜 자꾸만 나오지..
 아직도 안나오네요..이거원 언제 나오려나..동해물과백두산이마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 끝임 없이 나오면.. 싫은데..왜 자꾸만 나오지.. 아직도 안나오네요.</description>
-    </item>
-    
-    <item>
-      <title>First Post</title>
-      <link>https://jisoon.github.io/posts/first-post/</link>
-      <pubDate>Mon, 04 Sep 2017 02:10:55 KST</pubDate>
-      
-      <guid>https://jisoon.github.io/posts/first-post/</guid>
-      <description>Test</description>
     </item>
     
   </channel>
