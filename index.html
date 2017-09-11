@@ -5,12 +5,12 @@
 	<meta name="generator" content="Hugo 0.26" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>jisoon - jisoon</title>
+    <title>Write whatever! - Write whatever!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <link rel="canonical" href="https://jisoon.github.io/">
+    <link rel="canonical" href="./">
 
     
     
@@ -22,7 +22,7 @@
     
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
-    <link rel="stylesheet" type="text/css" href="https://jisoon.github.io/css/combined-min.css">
+    <link rel="stylesheet" type="text/css" href="./css/combined-min.css">
     <style>
         body {
             font-family: "Nanum Gothic", sans-serif;
@@ -35,11 +35,11 @@
     <header class="site-header px2 px-responsive">
   <div class="mt2 wrap">
     <div class="measure">
-      <a href="https://jisoon.github.io" class="site-title">jisoon</a>
+      <a href="" class="site-title">Write whatever!</a>
       <nav class="site-nav right">
-      <a href="https://jisoon.github.io/about/">About</a>
-<a href="https://jisoon.github.io/tags/">Tags</a>
-<a href="https://jisoon.github.io/contact/">Contact</a>
+      <a href="./about/">About</a>
+<a href="./tags/">Tags</a>
+<a href="./contact/">Contact</a>
 </form>
 
       </nav>
@@ -57,29 +57,49 @@
                         
                         
                             <div class="post">
-  <a class="post-link" href="https://jisoon.github.io/post/pixyll-first/">
-  <p class="post-meta left">Sep 4, 2017</p>
+  <a class="post-link" href="./post/interface-controller/">
+  <p class="post-meta left">Sep 9, 2017</p>
   <p class="post-author right">Written by </p>
   <div class="clearfix"></div>
-  <h3 class="h2 post-title">Pixyll First </h3>
-  <p class="post-summary">한글 테스트 입니다.
-최지순은 천재 입니다.
-과연 잘나올까요? 왜 마크다운이 적용이 안될까요?
- 내가 뭘 잘못했나요?  만약 수정을 하게 되면 어떻게 될까요?
-요약이라서 한줄로 나오고 상세는 잘 적용되서 나옵니다.
-자 그럼 이제.. 깃헙페이지에 올려 볼까요?
-그런데 몇글자를 써야지.. 리드모어가 나올까요???
-아직도 안나오네요..이거원 언제 나오려나..동해물과백두산이마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 끝임 없이 나오면.. 싫은데..왜 자꾸만 나오지..
-아직도 안나오네요..이거원 언제 나오려나..동해물과백두산이마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 끝임 없이 나오면.</p>
+  <h3 class="h2 post-title">Conterller Interface 그리고 Generic </h3>
+  <p class="post-summary">&laquo;모든 메뉴는 목록조회, 상세, 추가, 수정, 삭제 기능을 가진다. 관리자 기능 접근을 제어 할 수 있다.&raquo; 라는 요구사항이 있었다.
+요구사항을 보는순간 Interface 가 떠올랐다. 그리고 바로 샘플을 구현하였다. 설계 점검이라 코드는 간략히 작성 하기로 하였다.
+최초 코드는 다음과 같은 모습였다.
+BaseController.java
+public interface BaseController { Object getSearch(Object schDto); Object getFind(); void add(Object addDto); }  TestImplementsController.java
+@RestController public class TestImplementsController implements BaseController{ @Autowired private TestService service; @Override public Object getSearch(Object reqDto) { return null; } @Override public Object getFind() { return null; } @Override public void add(Object addDto) { } }  처음 작상하는 코드는 늘 문제점가 많다.</p>
   </a>
   
   <p class="post-meta">Tags:&nbsp;
   
       
-      <a href="https://jisoon.github.io/tags/first">first</a>
+      <a href="./tags/Java">Java</a>
   
       ,&nbsp;
-      <a href="https://jisoon.github.io/tags/test">test</a>
+      <a href="./tags/Generic">Generic</a>
+  </p>
+</div>
+
+                        
+                            <div class="post">
+  <a class="post-link" href="./post/first-post/">
+  <p class="post-meta left">Sep 3, 2017</p>
+  <p class="post-author right">Written by </p>
+  <div class="clearfix"></div>
+  <h3 class="h2 post-title">First writing </h3>
+  <p class="post-summary">Using Hugo! 그리고 깔끔한 pixyll 테마 적용!
+개인적으로 고딕체가 좋아 나눔고딕으로 변경하였다.
+장점 Hugo 테마들이 hexo 테마들보다 깔끔하다.
+단점 hugo-cli 가 배포 명령어 없어 github에 push 작업이 번거럽다.</p>
+  </a>
+  
+  <p class="post-meta">Tags:&nbsp;
+  
+      
+      <a href="./tags/hugo">hugo</a>
+  
+      ,&nbsp;
+      <a href="./tags/pixyll">pixyll</a>
   </p>
 </div>
 
@@ -124,7 +144,7 @@
     </footer>
 
     
-    <script src="/js/highlight.pack.js"></script>
+    <script src="./js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
     
