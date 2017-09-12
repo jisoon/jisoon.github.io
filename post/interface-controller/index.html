@@ -66,33 +66,33 @@
 
 <p>최초 코드는 다음과 같은 모습였다.</p>
 
-<p>BaseController.java</p>
+<p>TestController.java</p>
 
-<pre><code>public interface BaseController {
+<pre><code>public interface TestController {
 
-    Object getSearch(Object schDto);
+    Object search(Object schDto);
 
-    Object getFind();
+    Object find(Object findDto);
 
     void add(Object addDto);
 }
 </code></pre>
 
-<p>TestImplementsController.java</p>
+<p>TestControllerImpl.java</p>
 
 <pre><code>@RestController
-public class TestImplementsController implements BaseController{
+public class TestControllerImpl implements TestController{
 
     @Autowired
     private TestService service;
 
     @Override
-    public Object getSearch(Object reqDto) {
+    public Object search(Object reqDto) {
         return null;
     }
 
     @Override
-    public Object getFind() {
+    public Object find(Object findDto) {
         return null;
     }
 
@@ -105,47 +105,39 @@ public class TestImplementsController implements BaseController{
 }
 </code></pre>
 
-<p>처음 작상하는 코드는 늘 문제점가 많다.</p>
+<p>위 코드는 문제가 있다. Object 를 DTO 로 형변환 할수가 없다.
+해결책을 고민하다 제너릭이 생각이 났다. 제네릭을 이용해 Interface 매개변수를 T 로 만들면 될것 같았다.
+Interface 제네릭 사용법을 몰라 구글링후 아래 코드를 다시 작성하였다.</p>
 
-<p>구현 Contoller 매개변수가 Object 타입이라는 것이다.
-이것은 구현 Conttoller 에서 Service를 호출 할때 형변환을 하거나 아니면,
-Service 클래스 매개변수를 Object 로 하고 내부적으로 형변환을 해야 한다.</p>
+<p>TestController.java</p>
 
-<p>좀더 깔끔하게 구현하고 싶었다. 제너릭이 생각이 났다. 하지만 제너릭 문법은
-Collection 객체를 생성시에만 사용해 보았다.
-Class 나 Interface 제네릭 사용법을 검색 한후 숙지하고 다시 작성 하였다.</p>
+<pre><code>public interface TestController&lt;T1, T2, T3&gt; {
 
-<p>아래는 다시 작성 코드이다.</p>
+    Object search(T1 schDto);
 
-<p>BaseController.java</p>
-
-<pre><code>public interface BaseController&lt;T1, T2, T3&gt; {
-
-    Object getSearch(T1 schDto);
-
-    Object getFind(T2 findDto);
+    Object find(T2 findDto);
 
     void add(T3 addDto);
 }
 </code></pre>
 
-<p>TestImplementsController.java</p>
+<p>TestControllerImpl.java</p>
 
 <pre><code>@RestController
-public class TestImplementsController implements BaseController&lt;ServiceDto, FindDto, AddDto&gt; {
+public class TestControllerImpl implements TestController&lt;SearchDto, FindDto, AddDto&gt; {
 
     @Override
-    public Object getSearch(ServiceDto reqDto) {
+    public Object search(SearchDto reqDto) {
         return null;
     }
 
     @Override
-    public Object getFind(FindDto findDto) {
+    public Object find(FindDto findDto) {
         return null;
     }
 
     @Override
-    public void add(ServiceAddDto addDto) {
+    public void add(AddDto addDto) {
 
     }
 }
@@ -153,24 +145,15 @@ public class TestImplementsController implements BaseController&lt;ServiceDto, F
 
 <p>나와 동료는 나름 만족하였고 샘플 코드를 참조하여 개발 진행 하기로 했다.</p>
 
-<h3 id="제너릭에-대한-요약">제너릭에 대한 요약!</h3>
-
-<ol>
-<li>제너릭은 타입을 제한하기 위해서 필요한것</li>
-<li>runtime 이 아닌 compile 시 타입을 제한</li>
-<li>매개변수, 리턴값 등을 제한 할 수 있다.</li>
-<li>메소드와 클래스 단위 제너릭 사용 문법은 다르다.</li>
-</ol>
-
 <h3 id="에필로그">에필로그</h3>
 
-<p>BaseController 를 삭제 했다.</p>
+<p>코딩 시작 얼마후 Controller Interface(위 코드 TestController)를 삭제했다.
+필요하지도 않은 DTO 를 작성해야 되는 상황이 발생 하였고, 이것은 유지보수때 의문점만 생길 것이다.</p>
 
-<p>개발 시작후 얼마지나지 않아 너무 갑갑하고, 필요하지도 않은 Dto를 작성해야 되는 상황이 발생 하였다.</p>
+<p>제너릭을 제거하고 Interface 에서 모든 매개변수를 Map 으로 변경하자는 의견도 나왔다.
+하지만 유지보수를 위해서 DTO 를 사용하기로 결정하였기 때문에 의견을 받아드릴수 없었다.</p>
 
-<p>메뉴 URL 을 DB에 저장하고 Interceptor 나 Filtter 제어 하기로 하고 BaseController 는 삭제해 버렸다.</p>
-
-<p>또한 이 경우는 Dto 보다는 Map 이 좋을 것 같다.</p>
+<p>결국 메뉴 URL 을 DB에 저장하고 Interceptor 나 Filtter 제어 하기로 하고 제너릭을 제거 하였다.</p>
 
       </article>
 

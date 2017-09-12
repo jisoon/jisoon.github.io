@@ -18,9 +18,9 @@
       <description>&amp;laquo;모든 메뉴는 목록조회, 상세, 추가, 수정, 삭제 기능을 가진다. 관리자 기능 접근을 제어 할 수 있다.&amp;raquo; 라는 요구사항이 있었다.
 요구사항을 보는순간 Interface 가 떠올랐다. 그리고 바로 샘플을 구현하였다. 설계 점검이라 코드는 간략히 작성 하기로 하였다.
 최초 코드는 다음과 같은 모습였다.
-BaseController.java
-public interface BaseController { Object getSearch(Object schDto); Object getFind(); void add(Object addDto); }  TestImplementsController.java
-@RestController public class TestImplementsController implements BaseController{ @Autowired private TestService service; @Override public Object getSearch(Object reqDto) { return null; } @Override public Object getFind() { return null; } @Override public void add(Object addDto) { } }  처음 작상하는 코드는 늘 문제점가 많다.</description>
+TestController.java
+public interface TestController { Object search(Object schDto); Object find(Object findDto); void add(Object addDto); }  TestControllerImpl.java
+@RestController public class TestControllerImpl implements TestController{ @Autowired private TestService service; @Override public Object search(Object reqDto) { return null; } @Override public Object find(Object findDto) { return null; } @Override public void add(Object addDto) { } }  위 코드는 문제가 있다.</description>
     </item>
     
   </channel>
